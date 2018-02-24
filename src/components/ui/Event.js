@@ -44,7 +44,7 @@ const Event = (props) => {
     <Card className={classes.card} raised={false}>
       <CardMedia
         className={classes.media}
-        image={`/img/${event.image}`}
+        image={`img/${event.image}`}
         title={event.title}
       />
       <CardContent>

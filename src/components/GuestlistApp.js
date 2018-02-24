@@ -6,7 +6,7 @@ import LayoutTemplate from './LayoutTemplate'
 import { withStyles } from 'material-ui/styles'
 import Paper from 'material-ui/Paper'
 import Reboot from 'material-ui/Reboot'
-import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import { HashRouter, Switch, Route } from 'react-router-dom'
 import FadeIn from 'react-fade-in'
 import store from '../store'
 import { resetGuestFilterTerm } from '../actions'
@@ -23,25 +23,25 @@ const styles = {
 const GuestlistApp = (props) => {
   const { classes } = props
   return (
-    <BrowserRouter>
-        <LayoutTemplate>
-          <Reboot/>
-          <Paper className={classes.main}>
-          <Switch>
-            <Route exact path="/" component={EventsListContainer}/>
-            <Route path="/events/:id" render={props => {
-              store.dispatch(resetGuestFilterTerm())
-              return(
-                <FadeIn>
-                  <GuestListContainer {...props}/>
-                </FadeIn>
-              )
-            }}/>
-            <Route component={NotFoundTemplate}/>
-          </Switch>
-          </Paper>
-        </LayoutTemplate>
-    </BrowserRouter>
+    <HashRouter>
+      <LayoutTemplate>
+        <Reboot/>
+        <Paper className={classes.main}>
+        <Switch>
+          <Route exact path="/" component={EventsListContainer}/>
+          <Route path="/events/:id" render={props => {
+            store.dispatch(resetGuestFilterTerm())
+            return(
+              <FadeIn>
+                <GuestListContainer {...props}/>
+              </FadeIn>
+            )
+          }}/>
+          <Route component={NotFoundTemplate}/>
+        </Switch>
+        </Paper>
+      </LayoutTemplate>
+    </HashRouter>
   )
 }
 
